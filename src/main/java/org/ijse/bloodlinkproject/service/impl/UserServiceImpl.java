@@ -86,7 +86,7 @@ public class UserServiceImpl implements UserService {
                 userDTO.setPhoneNumber(user.getPhoneNumber());
                 userDTO.setUserAddress(user.getUserAddress());
 
-                userDTO.setDatastatus(Status.Active)  ;
+                userDTO.setDataStatus(Status.Active)  ;
                  responseList.add(userDTO);
             }
 
@@ -97,11 +97,7 @@ public class UserServiceImpl implements UserService {
         }
 
     }
-//
-//    @Override
-//    public List<UserDTO> getAllUsers() {
-//        return userRepository.getAllUsers();
-//    }
+
 
 
     @Override

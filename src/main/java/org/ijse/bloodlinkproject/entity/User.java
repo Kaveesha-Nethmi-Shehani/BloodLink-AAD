@@ -1,35 +1,4 @@
- /*
 package org.ijse.bloodlinkproject.entity;
-
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-@Table(name = "user")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
-    private String userFullName;
-    private String userEmail;
-    private String userPassword;
-    private String userPhoneNumber;
-    private String userAddress;
-
-
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Role role;
-}
-*/
-
- package org.ijse.bloodlinkproject.entity;
 
  import jakarta.persistence.*;
  import lombok.AllArgsConstructor;
@@ -38,10 +7,13 @@ public class User {
  import org.ijse.bloodlinkproject.enumiration.Status;
  import org.ijse.bloodlinkproject.enumiration.UserRole;
 
- @Data
- @AllArgsConstructor
- @NoArgsConstructor
- @Entity
+ import java.util.List;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "users")
  public class User {
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,6 +30,10 @@ public class User {
 
      @Enumerated(EnumType.STRING)
      private Status dataStatus;
+
+     //User-Donation
+     @OneToMany
+     private List<Donation> donations;
 
 
  }
