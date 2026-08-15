@@ -19,6 +19,9 @@ import java.util.List;
     private String bloodGroup;
     private String rh_factory;
 
+    //SP
+   private boolean active = true;
+
     @OneToMany(mappedBy = "bloodType")
     private List<Donation> donations;
 

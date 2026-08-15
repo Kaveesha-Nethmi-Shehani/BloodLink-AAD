@@ -102,11 +102,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(long userId) {
-
         log.info("Deleting user: {}", userId);
 
         try {
-
             Optional<User> optionalUser = userRepository.findById(userId);
 
             if (optionalUser.isEmpty()) {
@@ -115,7 +113,6 @@ public class UserServiceImpl implements UserService {
 
             User user = optionalUser.get();
             user.setDataStatus(Status.Inactive);
-
             userRepository.save(user);
 
         } catch (Exception e) {

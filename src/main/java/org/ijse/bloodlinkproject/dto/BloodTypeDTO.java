@@ -12,4 +12,7 @@ public class BloodTypeDTO {
     private String bloodTypeGroup;
     private String rh_factory;
 
+    //SP
+    private boolean active;
+
 }
