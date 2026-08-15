@@ -9,9 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BloodBankDTO {
-    private long bloodBankId;
+    private Long bloodBankId;
     private String bloodBankName;
     private String bloodBankAddress;
     private String bloodBankLocation;
     private String bloodBankContact;
+    private boolean active;
 }

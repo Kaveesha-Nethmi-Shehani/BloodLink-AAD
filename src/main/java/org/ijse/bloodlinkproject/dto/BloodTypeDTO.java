@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BloodTypeDTO {
-    private long bloodTypeId;
+    private Long bloodTypeId;
     private String bloodTypeGroup;
     private String rh_factory;
 

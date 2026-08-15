@@ -11,10 +11,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DonationDTO {
-    private long donationId;
-    private long userId;
-    private long bloodTypeId;
-    private long bloodBankId;
+    private Long donationId;
+    private Long userId;
+    private Long bloodTypeId;
+    private Long bloodBankId;
     private LocalDate donationDate;
     private int qty;
     private String Status;

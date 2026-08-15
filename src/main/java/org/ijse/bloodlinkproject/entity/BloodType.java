@@ -15,12 +15,12 @@ import java.util.List;
  public class BloodType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long bloodTypeId;
+    private Long bloodTypeId;
     private String bloodGroup;
     private String rh_factory;
 
     //SP
-   private boolean active = true;
+    private boolean active = true;
 
     @OneToMany(mappedBy = "bloodType")
     private List<Donation> donations;

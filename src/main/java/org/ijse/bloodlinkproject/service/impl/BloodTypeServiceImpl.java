@@ -33,7 +33,6 @@ public class BloodTypeServiceImpl implements BloodTypeService {
             log.error("bloodTypeServiceImpl({})", bloodTypeDTO);
             throw e;
         }
-
     }
 
     @Override
@@ -53,15 +52,16 @@ public class BloodTypeServiceImpl implements BloodTypeService {
 
         } catch (Exception e) {
             log.error("bloodTypeServiceImpl({})", bloodTypeDTO);
+            throw e;
         }
     }
 
     @Override
     public void deleteBloodType(long bloodTypeId) {
         log.info("deleteBloodType({})", bloodTypeId);
-        Optional<BloodType> optionalBloodType;
+
         try {
-            optionalBloodType = bloodTypeRepository.findById(bloodTypeId);
+            Optional<BloodType> optionalBloodType = bloodTypeRepository.findById(bloodTypeId);
             if (optionalBloodType.isEmpty()) {
                 throw new RuntimeException("Sorry, related bloodType is not found");
             }
@@ -92,8 +92,7 @@ public class BloodTypeServiceImpl implements BloodTypeService {
                     bloodType1.getBloodTypeId(),
                     bloodType1.getBloodGroup(),
                     bloodType1.getRh_factory(),
-                    bloodType1.isActive()
-            );
+                    bloodType1.isActive());
 
         } catch (Exception e) {
             log.error("bloodTypeServiceImpl({})", bloodTypeId);
@@ -107,6 +106,7 @@ public class BloodTypeServiceImpl implements BloodTypeService {
         try {
             List<BloodTypeDTO> responseList = new ArrayList<>();
             List<BloodType> bloodTypes = bloodTypeRepository.findAll();
+
             for (BloodType bloodType : bloodTypes) {
                 BloodTypeDTO bloodTypeDTO = new BloodTypeDTO();
                 bloodTypeDTO.setBloodTypeId(bloodType.getBloodTypeId());

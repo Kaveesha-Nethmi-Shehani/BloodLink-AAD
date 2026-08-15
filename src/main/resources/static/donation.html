@@ -1,0 +1,2512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BloodLink | Donate Blood</title>
+
+    <link rel="stylesheet" href="donation.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    body {
+        font-family: "Inter", sans-serif;
+
+        background: #f7f8fa;
+
+        color: #202124;
+    }
+
+
+    /* ================= NAVBAR ================= */
+
+    .navbar {
+        height: 75px;
+
+        background: #ffffff;
+
+        border-bottom: 1px solid #eeeeee;
+
+        display: flex;
+
+        align-items: center;
+
+        padding: 0 6%;
+
+        gap: 35px;
+    }
+
+
+    /* LOGO */
+
+    .logo {
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        font-size: 22px;
+
+        font-weight: 800;
+
+        margin-right: auto;
+    }
+
+
+    .logo > span span {
+        color: #e31b23;
+    }
+
+
+    .logo-icon {
+        width: 38px;
+        height: 38px;
+
+        background: #e31b23;
+
+        color: white;
+
+        border-radius: 10px;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+    }
+
+
+    /* NAV */
+
+    .navbar nav {
+        display: flex;
+
+        gap: 5px;
+    }
+
+
+    .navbar nav a {
+        text-decoration: none;
+
+        color: #777;
+
+        padding: 11px 14px;
+
+        border-radius: 8px;
+
+        font-size: 12px;
+
+        font-weight: 600;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 7px;
+    }
+
+
+    .navbar nav a:hover,
+    .navbar nav a.active {
+        color: #e31b23;
+
+        background: #fff0f1;
+    }
+
+
+    /* USER */
+
+    .user-profile {
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+    }
+
+
+    .user-avatar {
+        width: 38px;
+        height: 38px;
+
+        background: #f1f2f4;
+
+        color: #555;
+
+        border-radius: 50%;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+    }
+
+
+    .user-info {
+        display: flex;
+
+        flex-direction: column;
+    }
+
+
+    .user-info strong {
+        font-size: 12px;
+    }
+
+
+    .user-info small {
+        color: #999;
+
+        font-size: 10px;
+
+        margin-top: 3px;
+    }
+
+
+    /* ================= CONTAINER ================= */
+
+    .container {
+        width: 88%;
+
+        max-width: 1350px;
+
+        margin: auto;
+
+        padding: 45px 0 70px;
+    }
+
+
+    /* ================= HEADER ================= */
+
+    .page-header {
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        margin-bottom: 30px;
+    }
+
+
+    .subtitle {
+        color: #e31b23;
+
+        font-size: 11px;
+
+        font-weight: 800;
+
+        letter-spacing: 1.5px;
+    }
+
+
+    .page-header h1 {
+        font-size: 34px;
+
+        margin: 10px 0;
+    }
+
+
+    .page-header h1 span {
+        color: #e31b23;
+    }
+
+
+    .page-header p {
+        color: #777;
+
+        font-size: 13px;
+    }
+
+
+    .blood-icon {
+        width: 75px;
+        height: 75px;
+
+        border-radius: 50%;
+
+        background: #fff0f1;
+
+        color: #e31b23;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        font-size: 32px;
+    }
+
+
+    /* ================= LAYOUT ================= */
+
+    .donation-layout {
+        display: grid;
+
+        grid-template-columns: 1.45fr 0.75fr;
+
+        gap: 25px;
+
+        align-items: start;
+    }
+
+
+    /* ================= FORM CARD ================= */
+
+    .donation-card {
+        background: white;
+
+        border: 1px solid #eeeeee;
+
+        border-radius: 15px;
+
+        padding: 30px;
+    }
+
+
+    .card-header {
+        display: flex;
+
+        justify-content: space-between;
+
+        margin-bottom: 28px;
+    }
+
+
+    .card-header h2 {
+        font-size: 20px;
+    }
+
+
+    .card-header p {
+        color: #999;
+
+        font-size: 11px;
+
+        margin-top: 5px;
+    }
+
+
+    .header-icon {
+        width: 45px;
+        height: 45px;
+
+        background: #fff0f1;
+
+        color: #e31b23;
+
+        border-radius: 10px;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        font-size: 18px;
+    }
+
+
+    /* ================= FORM ================= */
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+
+    .form-group label {
+        display: block;
+
+        font-size: 12px;
+
+        font-weight: 700;
+
+        margin-bottom: 8px;
+    }
+
+
+    .form-group label span {
+        color: #e31b23;
+    }
+
+
+    .input-box {
+        height: 47px;
+
+        border: 1px solid #dedede;
+
+        border-radius: 8px;
+
+        display: flex;
+
+        align-items: center;
+
+        padding: 0 13px;
+
+        transition: 0.2s;
+    }
+
+
+    .input-box:focus-within {
+        border-color: #e31b23;
+
+        box-shadow: 0 0 0 3px #fff1f2;
+    }
+
+
+    .input-box i {
+        color: #aaa;
+
+        width: 27px;
+    }
+
+
+    .input-box select,
+    .input-box input {
+        border: none;
+
+        outline: none;
+
+        background: transparent;
+
+        width: 100%;
+
+        font-family: inherit;
+
+        font-size: 12px;
+
+        color: #333;
+    }
+
+
+    /* QUANTITY */
+
+    .quantity-box {
+        display: flex;
+
+        height: 47px;
+    }
+
+
+    .quantity-input {
+        flex: 1;
+
+        border: 1px solid #dedede;
+
+        border-radius: 8px 0 0 8px;
+
+        display: flex;
+
+        align-items: center;
+
+        padding: 0 13px;
+    }
+
+
+    .quantity-input i {
+        color: #aaa;
+
+        width: 27px;
+    }
+
+
+    .quantity-input input {
+        border: none;
+
+        outline: none;
+
+        width: 100%;
+
+        font-family: inherit;
+    }
+
+
+    .unit {
+        width: 60px;
+
+        background: #f4f4f5;
+
+        border: 1px solid #dedede;
+
+        border-left: none;
+
+        border-radius: 0 8px 8px 0;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size: 12px;
+
+        font-weight: 700;
+
+        color: #777;
+    }
+
+
+    .help-text {
+        display: block;
+
+        margin-top: 6px;
+
+        color: #aaa;
+
+        font-size: 10px;
+    }
+
+
+    /* ================= USER ================= */
+
+    .logged-user {
+        border: 1px solid #eeeeee;
+
+        background: #fafafa;
+
+        border-radius: 9px;
+
+        padding: 13px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 11px;
+
+        margin-bottom: 15px;
+    }
+
+
+    .user-small-icon {
+        width: 35px;
+        height: 35px;
+
+        border-radius: 50%;
+
+        background: #fff0f1;
+
+        color: #e31b23;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+    }
+
+
+    .logged-user div:nth-child(2) {
+        display: flex;
+
+        flex-direction: column;
+    }
+
+
+    .logged-user span {
+        color: #999;
+
+        font-size: 9px;
+    }
+
+
+    .logged-user strong {
+        font-size: 11px;
+
+        margin-top: 3px;
+    }
+
+
+    .lock-icon {
+        margin-left: auto;
+
+        color: #aaa;
+
+        font-size: 11px;
+    }
+
+
+    /* STATUS */
+
+    .status-info {
+        background: #f5f8ff;
+
+        border: 1px solid #e2eaff;
+
+        border-radius: 9px;
+
+        padding: 13px;
+
+        display: flex;
+
+        gap: 10px;
+
+        margin-bottom: 18px;
+
+        color: #4865a8;
+    }
+
+
+    .status-info > i {
+        margin-top: 2px;
+    }
+
+
+    .status-info strong {
+        font-size: 11px;
+    }
+
+
+    .status-info p {
+        font-size: 10px;
+
+        margin-top: 3px;
+
+        color: #7180a1;
+    }
+
+
+    /* CONFIRMATION */
+
+    .confirmation {
+        display: flex;
+
+        gap: 9px;
+
+        align-items: flex-start;
+
+        margin-bottom: 20px;
+    }
+
+
+    .confirmation input {
+        margin-top: 2px;
+
+        accent-color: #e31b23;
+    }
+
+
+    .confirmation label {
+        color: #777;
+
+        font-size: 10px;
+
+        line-height: 1.5;
+    }
+
+
+    /* BUTTON */
+
+    .donate-btn {
+        width: 100%;
+
+        height: 48px;
+
+        border: none;
+
+        border-radius: 8px;
+
+        background: #e31b23;
+
+        color: white;
+
+        font-family: inherit;
+
+        font-weight: 700;
+
+        font-size: 12px;
+
+        cursor: pointer;
+
+        transition: 0.2s;
+    }
+
+
+    .donate-btn:hover {
+        background: #c9141c;
+
+        transform: translateY(-1px);
+    }
+
+
+    .donate-btn:disabled {
+        opacity: 0.7;
+
+        cursor: not-allowed;
+
+        transform: none;
+    }
+
+
+    /* ================= SIDE ================= */
+
+    .side {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+
+    /* WHY */
+
+    .why-card {
+        background: #202328;
+
+        color: white;
+
+        border-radius: 15px;
+
+        padding: 25px;
+    }
+
+
+    .why-icon {
+        width: 40px;
+        height: 40px;
+
+        border-radius: 10px;
+
+        background: #e31b23;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        margin-bottom: 15px;
+    }
+
+
+    .why-card h2 {
+        font-size: 17px;
+    }
+
+
+    .why-card p {
+        color: #bfc1c5;
+
+        font-size: 11px;
+
+        line-height: 1.7;
+
+        margin: 10px 0 20px;
+    }
+
+
+    .life-box {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        border-top: 1px solid #3a3d42;
+
+        padding-top: 17px;
+    }
+
+
+    .life-box div {
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+
+    .life-box strong {
+        font-size: 22px;
+
+        color: #ff5a60;
+    }
+
+
+    .life-box span {
+        color: #aaa;
+
+        font-size: 9px;
+
+        margin-top: 3px;
+    }
+
+
+    .life-box > i {
+        color: #e31b23;
+    }
+
+
+    /* INFO */
+
+    .info-card {
+        background: white;
+
+        border: 1px solid #eeeeee;
+
+        border-radius: 15px;
+
+        padding: 23px;
+    }
+
+
+    .info-heading {
+        display: flex;
+
+        gap: 11px;
+
+        align-items: center;
+
+        margin-bottom: 17px;
+    }
+
+
+    .green-icon {
+        width: 40px;
+        height: 40px;
+
+        background: #ecfdf3;
+
+        color: #16a05d;
+
+        border-radius: 9px;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+    }
+
+
+    .info-heading h3 {
+        font-size: 14px;
+    }
+
+
+    .info-heading p {
+        color: #999;
+
+        font-size: 10px;
+
+        margin-top: 3px;
+    }
+
+
+    .info-card ul {
+        list-style: none;
+    }
+
+
+    .info-card li {
+        display: flex;
+
+        gap: 9px;
+
+        color: #666;
+
+        font-size: 10px;
+
+        margin: 12px 0;
+    }
+
+
+    .info-card li i {
+        color: #16a05d;
+    }
+
+
+    /* HELP */
+
+    .help-card {
+        background: #fff4f4;
+
+        border: 1px solid #ffe0e0;
+
+        border-radius: 15px;
+
+        padding: 18px;
+
+        display: flex;
+
+        gap: 12px;
+
+        color: #e31b23;
+    }
+
+
+    .help-card > i {
+        font-size: 20px;
+    }
+
+
+    .help-card h3 {
+        font-size: 12px;
+
+        color: #333;
+    }
+
+
+    .help-card p {
+        font-size: 10px;
+
+        color: #888;
+
+        line-height: 1.5;
+
+        margin-top: 4px;
+    }
+
+
+    /* ================= HISTORY ================= */
+
+    .history-card {
+        margin-top: 25px;
+
+        background: white;
+
+        border: 1px solid #eeeeee;
+
+        border-radius: 15px;
+
+        padding: 25px;
+    }
+
+
+    .history-header {
+        margin-bottom: 18px;
+    }
+
+
+    .history-header h2 {
+        font-size: 18px;
+    }
+
+
+    .history-header p {
+        color: #999;
+
+        font-size: 10px;
+
+        margin-top: 4px;
+    }
+
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+
+    table {
+        width: 100%;
+
+        border-collapse: collapse;
+    }
+
+
+    th {
+        text-align: left;
+
+        padding: 12px;
+
+        color: #999;
+
+        font-size: 9px;
+
+        border-bottom: 1px solid #eeeeee;
+    }
+
+
+    td {
+        padding: 14px 12px;
+
+        font-size: 10px;
+
+        border-bottom: 1px solid #f3f3f3;
+    }
+
+
+    .status {
+        background: #fff4df;
+
+        color: #d48a00;
+
+        border-radius: 20px;
+
+        padding: 5px 9px;
+
+        font-size: 8px;
+
+        font-weight: 700;
+    }
+
+
+    .status.completed {
+        background: #ecfdf3;
+
+        color: #16a05d;
+    }
+
+
+    .status.cancelled {
+        background: #fff0f1;
+
+        color: #e31b23;
+    }
+
+
+    .empty {
+        text-align: center;
+    }
+
+
+    .empty td {
+        padding: 35px;
+    }
+
+
+    .empty i {
+        color: #ddd;
+
+        font-size: 28px;
+    }
+
+
+    .empty p {
+        color: #999;
+
+        margin-top: 9px;
+
+        font-size: 11px;
+    }
+
+
+    /* ================= MODAL ================= */
+
+    .modal {
+        position: fixed;
+
+        inset: 0;
+
+        background: rgba(0, 0, 0, 0.55);
+
+        display: none;
+
+        align-items: center;
+
+        justify-content: center;
+
+        z-index: 1000;
+    }
+
+
+    .modal.show {
+        display: flex;
+    }
+
+
+    .modal-content {
+        background: white;
+
+        width: 370px;
+
+        border-radius: 16px;
+
+        padding: 35px;
+
+        text-align: center;
+    }
+
+
+    .success-icon {
+        width: 62px;
+        height: 62px;
+
+        border-radius: 50%;
+
+        background: #ecfdf3;
+
+        color: #16a05d;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        margin: auto;
+
+        font-size: 25px;
+    }
+
+
+    .modal-content h2 {
+        font-size: 20px;
+
+        margin-top: 15px;
+    }
+
+
+    .modal-content p {
+        color: #777;
+
+        font-size: 11px;
+
+        line-height: 1.6;
+
+        margin: 9px 0 20px;
+    }
+
+
+    .modal-content button {
+        background: #e31b23;
+
+        color: white;
+
+        border: none;
+
+        padding: 11px 35px;
+
+        border-radius: 8px;
+
+        font-weight: 700;
+
+        cursor: pointer;
+    }
+
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 1050px) {
+
+        .navbar nav {
+            display: none;
+        }
+
+
+        .donation-layout {
+            grid-template-columns: 1fr;
+        }
+
+
+        .side {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+        }
+
+
+        .help-card {
+            grid-column: span 2;
+        }
+    }
+
+
+    @media (max-width: 700px) {
+
+        .container {
+            width: 93%;
+
+            padding-top: 30px;
+        }
+
+
+        .page-header h1 {
+            font-size: 27px;
+        }
+
+
+        .blood-icon {
+            display: none;
+        }
+
+
+        .side {
+            display: flex;
+        }
+
+
+        .help-card {
+            grid-column: auto;
+        }
+
+
+        .donation-card {
+            padding: 20px;
+        }
+
+
+        .user-info {
+            display: none;
+        }
+    }
+
+
+    @media (max-width: 450px) {
+
+        .navbar {
+            padding: 0 4%;
+        }
+
+
+        .container {
+            width: 95%;
+        }
+
+
+        .page-header h1 {
+            font-size: 24px;
+        }
+
+
+        .donation-card {
+            padding: 17px;
+        }
+
+
+        .history-card {
+            padding: 17px;
+        }
+    }
+</style>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            <i class="fa-solid fa-droplet"></i>
+        </div>
+
+        <span>
+            Blood<span>Link</span>
+        </span>
+
+    </div>
+
+
+    <nav>
+
+        <a href="dashboard.html">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+        </a>
+
+        <a href="donation.html" class="active">
+            <i class="fa-solid fa-droplet"></i>
+            Donation
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            History
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-bell"></i>
+            Notifications
+        </a>
+
+    </nav>
+
+
+    <!-- USER -->
+
+    <div class="user-profile">
+
+        <div class="user-avatar">
+            <i class="fa-solid fa-user"></i>
+        </div>
+
+        <div class="user-info">
+
+            <strong id="userName">
+                Donor
+            </strong>
+
+            <small>
+                Blood Donor
+            </small>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="container">
+
+
+    <!-- PAGE HEADER -->
+
+    <section class="page-header">
+
+        <div>
+
+            <span class="subtitle">
+                <i class="fa-solid fa-heart-pulse"></i>
+                BLOOD DONATION
+            </span>
+
+            <h1>
+                Donate Blood,
+                <span>Save Lives.</span>
+            </h1>
+
+            <p>
+                Your blood donation can help save lives.
+                Register your donation through BloodLink.
+            </p>
+
+        </div>
+
+
+        <div class="blood-icon">
+
+            <i class="fa-solid fa-droplet"></i>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= CONTENT ================= -->
+
+    <section class="donation-layout">
+
+
+        <!-- ================= FORM ================= -->
+
+        <div class="donation-card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Donation Details
+                    </h2>
+
+                    <p>
+                        Enter the details of your blood donation.
+                    </p>
+
+                </div>
+
+
+                <div class="header-icon">
+
+                    <i class="fa-solid fa-hand-holding-droplet"></i>
+
+                </div>
+
+            </div>
+
+
+
+            <form id="donationForm">
+
+
+                <!-- BLOOD TYPE -->
+
+                <div class="form-group">
+
+                    <label for="bloodType">
+
+                        Blood Type
+
+                        <span>*</span>
+
+                    </label>
+
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-droplet"></i>
+
+
+                        <select
+                                id="bloodType"
+                                required>
+
+                            <option value="">
+                                Select Blood Type
+                            </option>
+
+                            <option value="1">
+                                A+
+                            </option>
+
+                            <option value="2">
+                                A-
+                            </option>
+
+                            <option value="3">
+                                B+
+                            </option>
+
+                            <option value="4">
+                                B-
+                            </option>
+
+                            <option value="5">
+                                AB+
+                            </option>
+
+                            <option value="6">
+                                AB-
+                            </option>
+
+                            <option value="7">
+                                O+
+                            </option>
+
+                            <option value="8">
+                                O-
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- BLOOD BANK -->
+
+                <div class="form-group">
+
+                    <label for="bloodBank">
+
+                        Blood Bank
+
+                        <span>*</span>
+
+                    </label>
+
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-hospital"></i>
+
+
+                        <select
+                                id="bloodBank"
+                                required>
+
+                            <option value="">
+                                Select Blood Bank
+                            </option>
+
+                            <option value="1">
+                                National Blood Centre
+                            </option>
+
+                            <option value="2">
+                                Colombo Blood Bank
+                            </option>
+
+                            <option value="3">
+                                Kandy Blood Bank
+                            </option>
+
+                            <option value="4">
+                                Galle Blood Bank
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DATE -->
+
+                <div class="form-group">
+
+                    <label for="donationDate">
+
+                        Donation Date
+
+                        <span>*</span>
+
+                    </label>
+
+
+                    <div class="input-box">
+
+                        <i class="fa-regular fa-calendar"></i>
+
+
+                        <input
+                                type="date"
+                                id="donationDate"
+                                required>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- QUANTITY -->
+
+                <div class="form-group">
+
+                    <label for="qty">
+
+                        Blood Quantity
+
+                        <span>*</span>
+
+                    </label>
+
+
+                    <div class="quantity-box">
+
+                        <div class="quantity-input">
+
+                            <i class="fa-solid fa-flask"></i>
+
+                            <input
+                                    type="number"
+                                    id="qty"
+                                    placeholder="Enter quantity"
+                                    min="1"
+                                    required>
+
+                        </div>
+
+
+                        <div class="unit">
+                            ml
+                        </div>
+
+                    </div>
+
+
+                    <small class="help-text">
+
+                        Recommended donation quantity:
+                        350ml – 450ml
+
+                    </small>
+
+                </div>
+
+
+
+                <!-- USER -->
+
+                <div class="logged-user">
+
+                    <div class="user-small-icon">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Donor
+                        </span>
+
+                        <strong id="loggedUser">
+                            Current Logged-in User
+                        </strong>
+
+                    </div>
+
+
+                    <i class="fa-solid fa-lock lock-icon"></i>
+
+                </div>
+
+
+
+                <!-- STATUS INFO -->
+
+                <div class="status-info">
+
+                    <i class="fa-solid fa-circle-info"></i>
+
+                    <div>
+
+                        <strong>
+                            Donation Status
+                        </strong>
+
+                        <p>
+                            Your donation will initially be marked as
+                            <b>PENDING</b>.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CONFIRM -->
+
+                <div class="confirmation">
+
+                    <input
+                            type="checkbox"
+                            id="confirm"
+                            required>
+
+
+                    <label for="confirm">
+
+                        I confirm that the donation information
+                        provided above is correct.
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- SUBMIT -->
+
+                <button
+                        type="submit"
+                        id="donateBtn"
+                        class="donate-btn">
+
+                    <i class="fa-solid fa-droplet"></i>
+
+                    Submit Donation
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+
+        <!-- ================= SIDE ================= -->
+
+        <aside class="side">
+
+
+            <!-- WHY DONATE -->
+
+            <div class="why-card">
+
+                <div class="why-icon">
+
+                    <i class="fa-solid fa-heart"></i>
+
+                </div>
+
+
+                <h2>
+                    Why Donate Blood?
+                </h2>
+
+
+                <p>
+
+                    Every blood donation can make a
+                    meaningful difference to someone
+                    in need.
+
+                </p>
+
+
+                <div class="life-box">
+
+                    <div>
+
+                        <strong>
+                            1
+                        </strong>
+
+                        <span>
+                            Donation
+                        </span>
+
+                    </div>
+
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+
+                    <div>
+
+                        <strong>
+                            3
+                        </strong>
+
+                        <span>
+                            Lives
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ELIGIBILITY -->
+
+            <div class="info-card">
+
+                <div class="info-heading">
+
+                    <div class="green-icon">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Before You Donate
+                        </h3>
+
+                        <p>
+                            Important information
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <ul>
+
+                    <li>
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Be in good health.
+
+                    </li>
+
+
+                    <li>
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Drink enough water.
+
+                    </li>
+
+
+                    <li>
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Eat a healthy meal.
+
+                    </li>
+
+
+                    <li>
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Get enough rest.
+
+                    </li>
+
+
+                    <li>
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Follow medical staff instructions.
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- HELP -->
+
+            <div class="help-card">
+
+                <i class="fa-solid fa-circle-question"></i>
+
+                <div>
+
+                    <h3>
+                        Need Help?
+                    </h3>
+
+                    <p>
+                        Contact the BloodLink support team
+                        if you have questions.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+    </section>
+
+
+
+    <!-- ================= DONATION HISTORY ================= -->
+
+    <section class="history-card">
+
+
+        <div class="history-header">
+
+            <div>
+
+                <h2>
+                    Donation Records
+                </h2>
+
+                <p>
+                    Your recent blood donation records
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                <tr>
+
+                    <th>
+                        Donation ID
+                    </th>
+
+                    <th>
+                        Date
+                    </th>
+
+                    <th>
+                        Blood Type
+                    </th>
+
+                    <th>
+                        Blood Bank
+                    </th>
+
+                    <th>
+                        Quantity
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                </tr>
+
+                </thead>
+
+
+                <tbody id="donationTable">
+
+                <tr class="empty">
+
+                    <td colspan="6">
+
+                        <i class="fa-solid fa-droplet"></i>
+
+                        <p>
+                            No donation records yet.
+                        </p>
+
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- ================= SUCCESS MODAL ================= -->
+
+<div
+        class="modal"
+        id="successModal">
+
+
+    <div class="modal-content">
+
+
+        <div class="success-icon">
+
+            <i class="fa-solid fa-check"></i>
+
+        </div>
+
+
+        <h2>
+            Donation Submitted!
+        </h2>
+
+
+        <p>
+
+            Your donation has been successfully
+            submitted to BloodLink.
+
+        </p>
+
+
+        <button
+                onclick="closeModal()">
+
+            Done
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<script>
+    // =====================================================
+    // BLOODLINK DONATION
+    // =====================================================
+
+    const API_URL = "http://localhost:8080/v1";
+
+
+    // =====================================================
+    // PAGE LOAD
+    // =====================================================
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        setMinimumDate();
+
+        loadUser();
+
+        loadDonationHistory();
+
+    });
+
+
+    // =====================================================
+    // SET MINIMUM DATE
+    // =====================================================
+
+    function setMinimumDate() {
+
+        const dateInput =
+            document.getElementById("donationDate");
+
+        const today =
+            new Date().toISOString().split("T")[0];
+
+        dateInput.min = today;
+
+    }
+
+
+    // =====================================================
+    // LOAD LOGGED USER
+    // =====================================================
+
+    function loadUser() {
+
+        /*
+            Login වෙද්දි user name එක localStorage
+            එකේ save කරලා තියෙනවා නම්:
+
+            localStorage.setItem("userName", user.name);
+        */
+
+
+        const userName =
+            localStorage.getItem("userName");
+
+
+        if (userName) {
+
+            document.getElementById(
+                "userName"
+            ).textContent = userName;
+
+
+            document.getElementById(
+                "loggedUser"
+            ).textContent = userName;
+
+        }
+
+    }
+
+
+    // =====================================================
+    // SUBMIT DONATION
+    // =====================================================
+
+    document
+        .getElementById("donationForm")
+        .addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
+
+
+                const donateButton =
+                    document.getElementById(
+                        "donateBtn"
+                    );
+
+
+                // -----------------------------------------
+                // GET FORM VALUES
+                // -----------------------------------------
+
+                const donationDate =
+                    document.getElementById(
+                        "donationDate"
+                    ).value;
+
+
+                const qty =
+                    document.getElementById(
+                        "qty"
+                    ).value;
+
+
+                const bloodTypeId =
+                    document.getElementById(
+                        "bloodType"
+                    ).value;
+
+
+                const bloodBankId =
+                    document.getElementById(
+                        "bloodBank"
+                    ).value;
+
+
+                // -----------------------------------------
+                // VALIDATION
+                // -----------------------------------------
+
+                if (
+                    !donationDate ||
+                    !qty ||
+                    !bloodTypeId ||
+                    !bloodBankId
+                ) {
+
+                    alert(
+                        "Please fill all required fields."
+                    );
+
+                    return;
+
+                }
+
+
+                if (qty <= 0) {
+
+                    alert(
+                        "Quantity must be greater than 0."
+                    );
+
+                    return;
+
+                }
+
+
+                // -----------------------------------------
+                // DONATION DATA
+                // -----------------------------------------
+
+                const donationData = {
+
+                    donationDate: donationDate,
+
+                    qty: Number(qty),
+
+                    bloodTypeId: Number(
+                        bloodTypeId
+                    ),
+
+                    bloodBankId: Number(
+                        bloodBankId
+                    )
+
+                };
+
+
+                console.log(
+                    "Donation Data:",
+                    donationData
+                );
+
+
+                // -----------------------------------------
+                // BUTTON LOADING
+                // -----------------------------------------
+
+                donateButton.disabled = true;
+
+
+                donateButton.innerHTML = `
+
+                <i class="fa-solid fa-spinner fa-spin"></i>
+
+                Submitting...
+
+            `;
+
+
+                try {
+
+                    /*
+                    =================================================
+                    BACKEND API
+                    =================================================
+
+                    Backend controller එක හදලා ඉවර උනාට පස්සේ
+                    මේ code එක enable කරන්න.
+
+                    const token =
+                        localStorage.getItem("token");
+
+
+                    const response = await fetch(
+                        `${API_URL}/donation/save`,
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json",
+
+                                "Authorization":
+                                    `Bearer ${token}`
+                            },
+
+                            body:
+                                JSON.stringify(
+                                    donationData
+                                )
+                        }
+                    );
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "Donation failed"
+                        );
+
+                    }
+
+                    */
+
+
+                    // -----------------------------------------
+                    // TEMPORARY LOCAL STORAGE
+                    // -----------------------------------------
+
+                    saveDonationLocally(
+                        donationData
+                    );
+
+
+                    // -----------------------------------------
+                    // SUCCESS
+                    // -----------------------------------------
+
+                    document
+                        .getElementById(
+                            "successModal"
+                        )
+                        .classList.add("show");
+
+
+                    // Reset form
+
+                    document
+                        .getElementById(
+                            "donationForm"
+                        )
+                        .reset();
+
+
+                    // Reload history
+
+                    loadDonationHistory();
+
+
+                } catch (error) {
+
+                    console.error(
+                        error
+                    );
+
+
+                    alert(
+                        "Something went wrong. Please try again."
+                    );
+
+                } finally {
+
+                    donateButton.disabled =
+                        false;
+
+
+                    donateButton.innerHTML = `
+
+                    <i class="fa-solid fa-droplet"></i>
+
+                    Submit Donation
+
+                `;
+
+                }
+
+            }
+        );
+
+
+    // =====================================================
+    // SAVE DONATION LOCALLY
+    // =====================================================
+
+    function saveDonationLocally(
+        donationData
+    ) {
+
+        let donations =
+            JSON.parse(
+                localStorage.getItem(
+                    "donations"
+                )
+            ) || [];
+
+
+        const newDonation = {
+
+            donationId:
+                donations.length + 1,
+
+            donationDate:
+            donationData.donationDate,
+
+            qty:
+            donationData.qty,
+
+            status:
+                "PENDING",
+
+            bloodTypeId:
+            donationData.bloodTypeId,
+
+            bloodBankId:
+            donationData.bloodBankId
+
+        };
+
+
+        donations.push(
+            newDonation
+        );
+
+
+        localStorage.setItem(
+            "donations",
+            JSON.stringify(
+                donations
+            )
+        );
+
+    }
+
+
+    // =====================================================
+    // LOAD DONATION HISTORY
+    // =====================================================
+
+    function loadDonationHistory() {
+
+        const donations =
+            JSON.parse(
+                localStorage.getItem(
+                    "donations"
+                )
+            ) || [];
+
+
+        const table =
+            document.getElementById(
+                "donationTable"
+            );
+
+
+        if (
+            donations.length === 0
+        ) {
+
+            table.innerHTML = `
+
+            <tr class="empty">
+
+                <td colspan="6">
+
+                    <i class="fa-solid fa-droplet"></i>
+
+                    <p>
+                        No donation records yet.
+                    </p>
+
+                </td>
+
+            </tr>
+
+        `;
+
+            return;
+
+        }
+
+
+        table.innerHTML = "";
+
+
+        donations
+            .slice()
+            .reverse()
+            .forEach(
+                function (donation) {
+
+                    const row =
+                        document.createElement(
+                            "tr"
+                        );
+
+
+                    row.innerHTML = `
+
+                    <td>
+                        #${donation.donationId}
+                    </td>
+
+                    <td>
+                        ${formatDate(
+                        donation.donationDate
+                    )}
+                    </td>
+
+                    <td>
+                        ${getBloodTypeName(
+                        donation.bloodTypeId
+                    )}
+                    </td>
+
+                    <td>
+                        ${getBloodBankName(
+                        donation.bloodBankId
+                    )}
+                    </td>
+
+                    <td>
+                        ${donation.qty} ml
+                    </td>
+
+                    <td>
+
+                        <span class="status">
+
+                            ${donation.status}
+
+                        </span>
+
+                    </td>
+
+                `;
+
+
+                    table.appendChild(
+                        row
+                    );
+
+                }
+            );
+
+    }
+
+
+    // =====================================================
+    // BLOOD TYPE NAME
+    // =====================================================
+
+    function getBloodTypeName(
+        id
+    ) {
+
+        const bloodTypes = {
+
+            1: "A+",
+            2: "A-",
+            3: "B+",
+            4: "B-",
+            5: "AB+",
+            6: "AB-",
+            7: "O+",
+            8: "O-"
+
+        };
+
+
+        return bloodTypes[id]
+            || "Unknown";
+
+    }
+
+
+    // =====================================================
+    // BLOOD BANK NAME
+    // =====================================================
+
+    function getBloodBankName(
+        id
+    ) {
+
+        const bloodBanks = {
+
+            1: "National Blood Centre",
+
+            2: "Colombo Blood Bank",
+
+            3: "Kandy Blood Bank",
+
+            4: "Galle Blood Bank"
+
+        };
+
+
+        return bloodBanks[id]
+            || "Unknown";
+
+    }
+
+
+    // =====================================================
+    // FORMAT DATE
+    // =====================================================
+
+    function formatDate(
+        dateString
+    ) {
+
+        const date =
+            new Date(
+                dateString
+            );
+
+
+        return date.toLocaleDateString(
+            "en-GB",
+            {
+                day: "2-digit",
+
+                month: "short",
+
+                year: "numeric"
+            }
+        );
+
+    }
+
+
+    // =====================================================
+    // CLOSE MODAL
+    // =====================================================
+
+    function closeModal() {
+
+        document
+            .getElementById(
+                "successModal"
+            )
+            .classList.remove(
+            "show"
+        );
+
+    }
+</script>
+
+</body>
+
+</html>

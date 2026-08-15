@@ -38,6 +38,10 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
 
                         .requestMatchers("/error").permitAll()
+                            //BloodType
+                        .requestMatchers(HttpMethod.POST, "/api/blood-type/save")
+                        .hasRole("ADMIN")
+
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BloodLink | Blood Bank Management</title>
+
+    <link rel="stylesheet" href="blood-bank.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: #f6f7fb;
+        color: #252525;
+    }
+
+
+    /* ================= NAVBAR ================= */
+
+    .navbar {
+        height: 72px;
+        background: #ffffff;
+
+        display: flex;
+        align-items: center;
+
+        padding: 0 6%;
+
+        border-bottom: 1px solid #eeeeee;
+
+        position: sticky;
+        top: 0;
+
+        z-index: 1000;
+    }
+
+
+    .logo {
+        font-size: 25px;
+        font-weight: 800;
+
+        color: #222;
+
+        margin-right: 60px;
+    }
+
+    .logo i {
+        color: #d90429;
+        margin-right: 5px;
+    }
+
+    .logo span {
+        color: #d90429;
+    }
+
+
+    .nav-links {
+        display: flex;
+        gap: 10px;
+
+        flex: 1;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+
+        color: #666;
+
+        padding: 10px 15px;
+
+        border-radius: 8px;
+
+        font-size: 14px;
+
+        transition: 0.3s;
+    }
+
+    .nav-links a i {
+        margin-right: 6px;
+    }
+
+    .nav-links a:hover {
+        color: #d90429;
+        background: #fff0f2;
+    }
+
+    .nav-links a.active {
+        color: #d90429;
+        background: #fff0f2;
+
+        font-weight: 600;
+    }
+
+
+    .logout-btn {
+        border: none;
+
+        background: #252525;
+        color: white;
+
+        padding: 10px 17px;
+
+        border-radius: 8px;
+
+        cursor: pointer;
+
+        font-size: 14px;
+    }
+
+    .logout-btn i {
+        margin-right: 6px;
+    }
+
+
+    /* ================= CONTAINER ================= */
+
+    .container {
+        width: 88%;
+        max-width: 1400px;
+
+        margin: 0 auto;
+
+        padding: 45px 0 70px;
+    }
+
+
+    /* ================= HEADER ================= */
+
+    .page-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        margin-bottom: 35px;
+    }
+
+    .page-label {
+        color: #d90429;
+
+        font-size: 12px;
+
+        font-weight: 700;
+
+        letter-spacing: 2px;
+
+        margin-bottom: 8px;
+    }
+
+    .page-header h1 {
+        font-size: 38px;
+
+        line-height: 1.2;
+
+        margin-bottom: 10px;
+    }
+
+    .page-header h1 span {
+        color: #d90429;
+    }
+
+    .subtitle {
+        color: #777;
+
+        font-size: 15px;
+    }
+
+    .blood-icon {
+        width: 80px;
+        height: 80px;
+
+        background: #fff0f2;
+
+        border-radius: 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: #d90429;
+
+        font-size: 32px;
+    }
+
+
+    /* ================= FORM CARD ================= */
+
+    .form-card,
+    .table-card {
+        background: white;
+
+        border-radius: 16px;
+
+        padding: 30px;
+
+        margin-bottom: 30px;
+
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+
+        border: 1px solid #eeeeee;
+    }
+
+
+    .section-title {
+        display: flex;
+        align-items: center;
+
+        gap: 15px;
+
+        margin-bottom: 28px;
+    }
+
+    .title-icon {
+        width: 45px;
+        height: 45px;
+
+        border-radius: 10px;
+
+        background: #fff0f2;
+
+        color: #d90429;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 18px;
+    }
+
+    .section-title h2 {
+        font-size: 20px;
+
+        margin-bottom: 4px;
+    }
+
+    .section-title p {
+        font-size: 13px;
+
+        color: #888;
+    }
+
+
+    /* ================= FORM ================= */
+
+    .form-grid {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 22px;
+    }
+
+    .full-width {
+        grid-column: span 2;
+    }
+
+    .form-group label {
+        display: block;
+
+        font-size: 13px;
+
+        font-weight: 600;
+
+        margin-bottom: 8px;
+
+        color: #444;
+    }
+
+    .input-box {
+        height: 48px;
+
+        border: 1px solid #ddd;
+
+        border-radius: 9px;
+
+        display: flex;
+        align-items: center;
+
+        padding: 0 14px;
+
+        transition: 0.3s;
+
+        background: #fff;
+    }
+
+    .input-box:focus-within {
+        border-color: #d90429;
+
+        box-shadow: 0 0 0 3px rgba(217, 4, 41, 0.08);
+    }
+
+    .input-box i {
+        color: #999;
+
+        margin-right: 10px;
+    }
+
+    .input-box input {
+        border: none;
+
+        outline: none;
+
+        width: 100%;
+
+        font-size: 14px;
+
+        background: transparent;
+    }
+
+
+    /* ================= STATUS ================= */
+
+    .status-box {
+        height: 48px;
+
+        display: flex;
+        align-items: center;
+
+        gap: 12px;
+    }
+
+    .switch {
+        position: relative;
+
+        width: 48px;
+        height: 26px;
+
+        display: inline-block;
+    }
+
+    .switch input {
+        opacity: 0;
+
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+
+        cursor: pointer;
+
+        inset: 0;
+
+        background: #ccc;
+
+        border-radius: 30px;
+
+        transition: 0.3s;
+    }
+
+    .slider:before {
+        content: "";
+
+        position: absolute;
+
+        width: 20px;
+        height: 20px;
+
+        left: 3px;
+        bottom: 3px;
+
+        background: white;
+
+        border-radius: 50%;
+
+        transition: 0.3s;
+    }
+
+    .switch input:checked + .slider {
+        background: #d90429;
+    }
+
+    .switch input:checked + .slider:before {
+        transform: translateX(22px);
+    }
+
+    #statusText {
+        font-size: 14px;
+
+        font-weight: 600;
+
+        color: #d90429;
+    }
+
+
+    /* ================= BUTTONS ================= */
+
+    .form-buttons {
+        margin-top: 28px;
+
+        display: flex;
+
+        gap: 12px;
+    }
+
+    .save-btn,
+    .cancel-btn {
+        border: none;
+
+        padding: 12px 20px;
+
+        border-radius: 8px;
+
+        cursor: pointer;
+
+        font-size: 14px;
+
+        font-weight: 600;
+
+        transition: 0.3s;
+    }
+
+    .save-btn {
+        background: #d90429;
+
+        color: white;
+    }
+
+    .save-btn:hover {
+        background: #b90323;
+
+        transform: translateY(-1px);
+    }
+
+    .cancel-btn {
+        background: #eeeeee;
+
+        color: #444;
+    }
+
+    .cancel-btn:hover {
+        background: #ddd;
+    }
+
+    .save-btn i,
+    .cancel-btn i {
+        margin-right: 7px;
+    }
+
+
+    /* ================= TABLE HEADER ================= */
+
+    .table-header {
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        margin-bottom: 25px;
+    }
+
+    .table-header h2 {
+        font-size: 20px;
+
+        margin-bottom: 5px;
+    }
+
+    .table-header h2 i {
+        color: #d90429;
+
+        margin-right: 8px;
+    }
+
+    .table-header p {
+        color: #888;
+
+        font-size: 13px;
+    }
+
+
+    .search-box {
+        width: 260px;
+
+        height: 42px;
+
+        border: 1px solid #ddd;
+
+        border-radius: 8px;
+
+        display: flex;
+        align-items: center;
+
+        padding: 0 13px;
+    }
+
+    .search-box i {
+        color: #999;
+
+        margin-right: 8px;
+    }
+
+    .search-box input {
+        border: none;
+
+        outline: none;
+
+        width: 100%;
+
+        font-size: 13px;
+    }
+
+
+    /* ================= TABLE ================= */
+
+    .table-wrapper {
+        width: 100%;
+
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+
+        border-collapse: collapse;
+
+        min-width: 850px;
+    }
+
+    thead {
+        background: #fafafa;
+    }
+
+    th {
+        text-align: left;
+
+        padding: 15px;
+
+        font-size: 12px;
+
+        text-transform: uppercase;
+
+        letter-spacing: 0.5px;
+
+        color: #777;
+
+        border-bottom: 1px solid #eee;
+    }
+
+    td {
+        padding: 16px 15px;
+
+        font-size: 13px;
+
+        border-bottom: 1px solid #f0f0f0;
+
+        color: #555;
+    }
+
+    tbody tr:hover {
+        background: #fffafa;
+    }
+
+    .bank-name {
+        font-weight: 700;
+
+        color: #333;
+    }
+
+    .id-cell {
+        color: #999;
+
+        font-weight: 600;
+    }
+
+
+    /* ================= STATUS BADGE ================= */
+
+    .status-badge {
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 6px;
+
+        padding: 5px 10px;
+
+        border-radius: 20px;
+
+        font-size: 11px;
+
+        font-weight: 700;
+    }
+
+    .status-active {
+        background: #e9f9ef;
+
+        color: #16803c;
+    }
+
+    .status-inactive {
+        background: #f5f5f5;
+
+        color: #888;
+    }
+
+
+    /* ================= ACTION BUTTONS ================= */
+
+    .action-buttons {
+        display: flex;
+
+        gap: 7px;
+    }
+
+    .action-btn {
+        width: 34px;
+        height: 34px;
+
+        border: none;
+
+        border-radius: 7px;
+
+        cursor: pointer;
+
+        transition: 0.2s;
+    }
+
+    .edit-btn {
+        background: #fff3df;
+
+        color: #d88a00;
+    }
+
+    .edit-btn:hover {
+        background: #ffe4b5;
+    }
+
+    .delete-btn {
+        background: #fff0f2;
+
+        color: #d90429;
+    }
+
+    .delete-btn:hover {
+        background: #ffd9df;
+    }
+
+
+    /* ================= EMPTY ================= */
+
+    .empty-message {
+        text-align: center;
+
+        padding: 50px 20px;
+
+        color: #888;
+    }
+
+    .empty-message i {
+        font-size: 45px;
+
+        color: #ddd;
+
+        margin-bottom: 15px;
+    }
+
+    .empty-message h3 {
+        color: #555;
+
+        margin-bottom: 5px;
+    }
+
+
+    /* ================= TOAST ================= */
+
+    .toast {
+        position: fixed;
+
+        right: 30px;
+        bottom: 30px;
+
+        background: #222;
+
+        color: white;
+
+        padding: 14px 20px;
+
+        border-radius: 9px;
+
+        display: flex;
+        align-items: center;
+
+        gap: 10px;
+
+        transform: translateY(100px);
+
+        opacity: 0;
+
+        transition: 0.3s;
+
+        z-index: 5000;
+
+        font-size: 14px;
+    }
+
+    .toast.show {
+        transform: translateY(0);
+
+        opacity: 1;
+    }
+
+    .toast i {
+        color: #35d07f;
+    }
+
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 900px) {
+
+        .nav-links {
+            display: none;
+        }
+
+        .navbar {
+            padding: 0 4%;
+        }
+
+        .logo {
+            margin-right: auto;
+        }
+
+        .container {
+            width: 92%;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .full-width {
+            grid-column: span 1;
+        }
+
+        .page-header h1 {
+            font-size: 30px;
+        }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+        .container {
+            width: 94%;
+        }
+
+        .form-card,
+        .table-card {
+            padding: 20px;
+        }
+
+        .page-header {
+            align-items: flex-start;
+        }
+
+        .blood-icon {
+            width: 55px;
+            height: 55px;
+
+            font-size: 22px;
+        }
+
+        .table-header {
+            flex-direction: column;
+
+            align-items: flex-start;
+
+            gap: 15px;
+        }
+
+        .search-box {
+            width: 100%;
+        }
+
+        .form-buttons {
+            flex-direction: column;
+        }
+
+        .save-btn,
+        .cancel-btn {
+            width: 100%;
+        }
+
+        .logout-btn {
+            padding: 9px 11px;
+        }
+
+        .logout-btn i {
+            margin-right: 0;
+        }
+
+        .logout-btn {
+            font-size: 0;
+        }
+
+        .logout-btn i {
+            font-size: 14px;
+        }
+    }
+</style>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        <i class="fa-solid fa-droplet"></i>
+        Blood<span>Link</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="#"><i class="fa-solid fa-house"></i> Dashboard</a>
+        <a href="#" class="active">
+            <i class="fa-solid fa-building-circle-check"></i>
+            Blood Banks
+        </a>
+        <a href="#">
+            <i class="fa-solid fa-boxes-stacked"></i>
+            Blood Inventory
+        </a>
+    </div>
+
+    <button class="logout-btn" onclick="logout()">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Logout
+    </button>
+
+</nav>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="container">
+
+    <!-- Header -->
+
+    <div class="page-header">
+
+        <div>
+            <p class="page-label">BLOODLINK MANAGEMENT</p>
+
+            <h1>
+                Blood Bank
+                <span>Management</span>
+            </h1>
+
+            <p class="subtitle">
+                Manage registered blood banks and their information.
+            </p>
+        </div>
+
+        <div class="blood-icon">
+            <i class="fa-solid fa-building-circle-check"></i>
+        </div>
+
+    </div>
+
+
+    <!-- ================= FORM ================= -->
+
+    <section class="form-card">
+
+        <div class="section-title">
+
+            <div class="title-icon">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+
+            <div>
+                <h2 id="formTitle">Add Blood Bank</h2>
+
+                <p>
+                    Enter blood bank information below.
+                </p>
+            </div>
+
+        </div>
+
+
+        <form id="bloodBankForm">
+
+            <input type="hidden" id="bloodBankId">
+
+
+            <div class="form-grid">
+
+                <!-- Blood Bank Name -->
+
+                <div class="form-group">
+
+                    <label for="bloodBankName">
+                        Blood Bank Name
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-building"></i>
+
+                        <input
+                                type="text"
+                                id="bloodBankName"
+                                placeholder="Enter blood bank name"
+                                required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Location -->
+
+                <div class="form-group">
+
+                    <label for="bloodBankLocation">
+                        Location
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <input
+                                type="text"
+                                id="bloodBankLocation"
+                                placeholder="Enter location"
+                                required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Address -->
+
+                <div class="form-group full-width">
+
+                    <label for="bloodBankAddress">
+                        Address
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-map"></i>
+
+                        <input
+                                type="text"
+                                id="bloodBankAddress"
+                                placeholder="Enter blood bank address"
+                                required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Contact -->
+
+                <div class="form-group">
+
+                    <label for="bloodBankContact">
+                        Contact Number
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        <input
+                                type="text"
+                                id="bloodBankContact"
+                                placeholder="Enter contact number"
+                                required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Active -->
+
+                <div class="form-group">
+
+                    <label>
+                        Status
+                    </label>
+
+                    <div class="status-box">
+
+                        <label class="switch">
+
+                            <input
+                                    type="checkbox"
+                                    id="active"
+                                    checked
+                            >
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                        <span id="statusText">
+                            Active
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Buttons -->
+
+            <div class="form-buttons">
+
+                <button
+                        type="submit"
+                        class="save-btn"
+                        id="saveBtn"
+                >
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Save Blood Bank
+                </button>
+
+                <button
+                        type="button"
+                        class="cancel-btn"
+                        onclick="resetForm()"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                    Clear
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- ================= BLOOD BANK LIST ================= -->
+
+    <section class="table-card">
+
+        <div class="table-header">
+
+            <div>
+
+                <h2>
+                    <i class="fa-solid fa-list"></i>
+                    Registered Blood Banks
+                </h2>
+
+                <p>
+                    All blood banks registered in BloodLink.
+                </p>
+
+            </div>
+
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search blood bank..."
+                        onkeyup="searchBloodBanks()"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- Table -->
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Blood Bank</th>
+
+                    <th>Location</th>
+
+                    <th>Address</th>
+
+                    <th>Contact</th>
+
+                    <th>Status</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+                </thead>
+
+                <tbody id="bloodBankTableBody">
+
+                <!-- Data loaded using JavaScript -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- Empty Message -->
+
+        <div
+                id="emptyMessage"
+                class="empty-message"
+                style="display: none;"
+        >
+
+            <i class="fa-solid fa-building-circle-exclamation"></i>
+
+            <h3>No Blood Banks Found</h3>
+
+            <p>
+                Add your first blood bank using the form above.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= TOAST ================= -->
+
+<div id="toast" class="toast">
+
+    <i id="toastIcon" class="fa-solid fa-circle-check"></i>
+
+    <span id="toastMessage">
+        Success
+    </span>
+
+</div>
+
+
+<script>
+    // =====================================================
+    // BLOODLINK - BLOOD BANK MANAGEMENT
+    // =====================================================
+
+    const API_URL = "http://localhost:8080/v1/blood-bank";
+
+    let bloodBanks = [];
+
+
+    // =====================================================
+    // PAGE LOAD
+    // =====================================================
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+        loadBloodBanks();
+
+        document
+            .getElementById("active")
+            .addEventListener("change", updateStatusText);
+
+    });
+
+
+    // =====================================================
+    // GET JWT TOKEN
+    // =====================================================
+
+    function getToken() {
+
+        return localStorage.getItem("token");
+    }
+
+
+    // =====================================================
+    // COMMON HEADERS
+    // =====================================================
+
+    function getHeaders() {
+
+        const token = getToken();
+
+        return {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        };
+    }
+
+
+    // =====================================================
+    // LOAD ALL BLOOD BANKS
+    // =====================================================
+
+    async function loadBloodBanks() {
+
+        try {
+
+            const response = await fetch(
+                `${API_URL}/get-all`,
+                {
+                    method: "GET",
+                    headers: getHeaders()
+                }
+            );
+
+
+            if (!response.ok) {
+
+                if (response.status === 403) {
+                    showToast("Access denied. Please login again.", "error");
+                    return;
+                }
+
+                throw new Error("Failed to load blood banks");
+            }
+
+
+            bloodBanks = await response.json();
+
+            displayBloodBanks(bloodBanks);
+
+        } catch (error) {
+
+            console.error("Load Error:", error);
+
+            showToast(
+                "Unable to load blood banks.",
+                "error"
+            );
+        }
+    }
+
+
+    // =====================================================
+    // DISPLAY BLOOD BANKS
+    // =====================================================
+
+    function displayBloodBanks(data) {
+
+        const tableBody =
+            document.getElementById("bloodBankTableBody");
+
+        const emptyMessage =
+            document.getElementById("emptyMessage");
+
+
+        tableBody.innerHTML = "";
+
+
+        if (!data || data.length === 0) {
+
+            emptyMessage.style.display = "block";
+
+            return;
+        }
+
+
+        emptyMessage.style.display = "none";
+
+
+        data.forEach(bank => {
+
+            const row = document.createElement("tr");
+
+
+            row.innerHTML = `
+
+            <td class="id-cell">
+                #${bank.bloodBankId}
+            </td>
+
+            <td class="bank-name">
+                ${escapeHtml(bank.bloodBankName)}
+            </td>
+
+            <td>
+                <i class="fa-solid fa-location-dot"
+                   style="color:#d90429;">
+                </i>
+
+                ${escapeHtml(bank.bloodBankLocation)}
+            </td>
+
+            <td>
+                ${escapeHtml(bank.bloodBankAddress)}
+            </td>
+
+            <td>
+                <i class="fa-solid fa-phone"
+                   style="color:#999;">
+                </i>
+
+                ${escapeHtml(bank.bloodBankContact)}
+            </td>
+
+            <td>
+
+                ${
+                bank.active
+
+                    ?
+
+                    `<span class="status-badge status-active">
+                        <i class="fa-solid fa-circle"></i>
+                        Active
+                     </span>`
+
+                    :
+
+                    `<span class="status-badge status-inactive">
+                        <i class="fa-solid fa-circle"></i>
+                        Inactive
+                     </span>`
+            }
+
+            </td>
+
+            <td>
+
+                <div class="action-buttons">
+
+                    <button
+                        class="action-btn edit-btn"
+                        onclick="editBloodBank(${bank.bloodBankId})"
+                        title="Edit"
+                    >
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+
+
+                    <button
+                        class="action-btn delete-btn"
+                        onclick="deleteBloodBank(${bank.bloodBankId})"
+                        title="Delete"
+                    >
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+
+                </div>
+
+            </td>
+        `;
+
+
+            tableBody.appendChild(row);
+
+        });
+    }
+
+
+    // =====================================================
+    // SAVE / UPDATE
+    // =====================================================
+
+    document
+        .getElementById("bloodBankForm")
+        .addEventListener("submit", async function (event) {
+
+            event.preventDefault();
+
+
+            const id =
+                document.getElementById("bloodBankId").value;
+
+
+            const bloodBank = {
+
+                bloodBankId: id
+                    ? Number(id)
+                    : 0,
+
+                bloodBankName:
+                    document
+                        .getElementById("bloodBankName")
+                        .value
+                        .trim(),
+
+                bloodBankAddress:
+                    document
+                        .getElementById("bloodBankAddress")
+                        .value
+                        .trim(),
+
+                bloodBankLocation:
+                    document
+                        .getElementById("bloodBankLocation")
+                        .value
+                        .trim(),
+
+                bloodBankContact:
+                    document
+                        .getElementById("bloodBankContact")
+                        .value
+                        .trim(),
+
+                active:
+                document
+                    .getElementById("active")
+                    .checked
+            };
+
+
+            // Basic validation
+
+            if (!bloodBank.bloodBankName) {
+
+                showToast(
+                    "Please enter blood bank name.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            if (!bloodBank.bloodBankLocation) {
+
+                showToast(
+                    "Please enter location.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            if (!bloodBank.bloodBankAddress) {
+
+                showToast(
+                    "Please enter address.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            if (!bloodBank.bloodBankContact) {
+
+                showToast(
+                    "Please enter contact number.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            if (id) {
+
+                await updateBloodBank(bloodBank);
+
+            } else {
+
+                await saveBloodBank(bloodBank);
+
+            }
+
+        });
+
+
+    // =====================================================
+    // SAVE BLOOD BANK
+    // =====================================================
+
+    async function saveBloodBank(bloodBank) {
+
+        try {
+
+            const response = await fetch(
+                `${API_URL}/save`,
+                {
+                    method: "POST",
+
+                    headers: getHeaders(),
+
+                    body: JSON.stringify(bloodBank)
+                }
+            );
+
+
+            if (!response.ok) {
+
+                if (response.status === 403) {
+
+                    showToast(
+                        "You don't have permission.",
+                        "error"
+                    );
+
+                    return;
+                }
+
+                throw new Error("Save failed");
+            }
+
+
+            showToast(
+                "Blood bank saved successfully!",
+                "success"
+            );
+
+
+            resetForm();
+
+            loadBloodBanks();
+
+
+        } catch (error) {
+
+            console.error("Save Error:", error);
+
+            showToast(
+                "Failed to save blood bank.",
+                "error"
+            );
+        }
+    }
+
+
+    // =====================================================
+    // EDIT BLOOD BANK
+    // =====================================================
+
+    function editBloodBank(id) {
+
+        const bank =
+            bloodBanks.find(
+                item => item.bloodBankId === id
+            );
+
+
+        if (!bank) {
+
+            showToast(
+                "Blood bank not found.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        document.getElementById("bloodBankId").value =
+            bank.bloodBankId;
+
+
+        document.getElementById("bloodBankName").value =
+            bank.bloodBankName;
+
+
+        document.getElementById("bloodBankAddress").value =
+            bank.bloodBankAddress;
+
+
+        document.getElementById("bloodBankLocation").value =
+            bank.bloodBankLocation;
+
+
+        document.getElementById("bloodBankContact").value =
+            bank.bloodBankContact;
+
+
+        document.getElementById("active").checked =
+            bank.active;
+
+
+        updateStatusText();
+
+
+        document.getElementById("formTitle").textContent =
+            "Update Blood Bank";
+
+
+        document.getElementById("saveBtn").innerHTML =
+            `<i class="fa-solid fa-pen"></i> Update Blood Bank`;
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    // =====================================================
+    // UPDATE BLOOD BANK
+    // =====================================================
+
+    async function updateBloodBank(bloodBank) {
+
+        try {
+
+            const response = await fetch(
+                `${API_URL}/update`,
+                {
+                    method: "PUT",
+
+                    headers: getHeaders(),
+
+                    body: JSON.stringify(bloodBank)
+                }
+            );
+
+
+            if (!response.ok) {
+
+                if (response.status === 403) {
+
+                    showToast(
+                        "You don't have permission.",
+                        "error"
+                    );
+
+                    return;
+                }
+
+                throw new Error("Update failed");
+            }
+
+
+            showToast(
+                "Blood bank updated successfully!",
+                "success"
+            );
+
+
+            resetForm();
+
+            loadBloodBanks();
+
+
+        } catch (error) {
+
+            console.error("Update Error:", error);
+
+            showToast(
+                "Failed to update blood bank.",
+                "error"
+            );
+        }
+    }
+
+
+    // =====================================================
+    // DELETE BLOOD BANK
+    // =====================================================
+
+    async function deleteBloodBank(id) {
+
+        const confirmDelete =
+            confirm(
+                "Are you sure you want to delete this blood bank?"
+            );
+
+
+        if (!confirmDelete) {
+            return;
+        }
+
+
+        try {
+
+            const response = await fetch(
+                `${API_URL}/delete/${id}`,
+                {
+                    method: "DELETE",
+
+                    headers: getHeaders()
+                }
+            );
+
+
+            if (!response.ok) {
+
+                if (response.status === 403) {
+
+                    showToast(
+                        "You don't have permission.",
+                        "error"
+                    );
+
+                    return;
+                }
+
+                throw new Error("Delete failed");
+            }
+
+
+            showToast(
+                "Blood bank deleted successfully!",
+                "success"
+            );
+
+
+            loadBloodBanks();
+
+
+        } catch (error) {
+
+            console.error("Delete Error:", error);
+
+            showToast(
+                "Failed to delete blood bank.",
+                "error"
+            );
+        }
+    }
+
+
+    // =====================================================
+    // SEARCH
+    // =====================================================
+
+    function searchBloodBanks() {
+
+        const searchValue =
+            document
+                .getElementById("searchInput")
+                .value
+                .toLowerCase()
+                .trim();
+
+
+        const filtered =
+            bloodBanks.filter(bank =>
+
+                bank.bloodBankName
+                    .toLowerCase()
+                    .includes(searchValue)
+
+                ||
+
+                bank.bloodBankLocation
+                    .toLowerCase()
+                    .includes(searchValue)
+
+                ||
+
+                bank.bloodBankAddress
+                    .toLowerCase()
+                    .includes(searchValue)
+
+                ||
+
+                bank.bloodBankContact
+                    .toLowerCase()
+                    .includes(searchValue)
+
+            );
+
+
+        displayBloodBanks(filtered);
+    }
+
+
+    // =====================================================
+    // RESET FORM
+    // =====================================================
+
+    function resetForm() {
+
+        document
+            .getElementById("bloodBankForm")
+            .reset();
+
+
+        document.getElementById("bloodBankId").value = "";
+
+
+        document.getElementById("active").checked = true;
+
+
+        document.getElementById("formTitle").textContent =
+            "Add Blood Bank";
+
+
+        document.getElementById("saveBtn").innerHTML =
+            `<i class="fa-solid fa-floppy-disk"></i>
+         Save Blood Bank`;
+
+
+        updateStatusText();
+    }
+
+
+    // =====================================================
+    // STATUS TEXT
+    // =====================================================
+
+    function updateStatusText() {
+
+        const active =
+            document.getElementById("active").checked;
+
+
+        const statusText =
+            document.getElementById("statusText");
+
+
+        if (active) {
+
+            statusText.textContent = "Active";
+
+            statusText.style.color = "#d90429";
+
+        } else {
+
+            statusText.textContent = "Inactive";
+
+            statusText.style.color = "#888";
+        }
+    }
+
+
+    // =====================================================
+    // TOAST
+    // =====================================================
+
+    function showToast(message, type = "success") {
+
+        const toast =
+            document.getElementById("toast");
+
+        const toastMessage =
+            document.getElementById("toastMessage");
+
+        const toastIcon =
+            document.getElementById("toastIcon");
+
+
+        toastMessage.textContent = message;
+
+
+        if (type === "error") {
+
+            toastIcon.className =
+                "fa-solid fa-circle-exclamation";
+
+            toastIcon.style.color = "#ff4d4d";
+
+        } else {
+
+            toastIcon.className =
+                "fa-solid fa-circle-check";
+
+            toastIcon.style.color = "#35d07f";
+        }
+
+
+        toast.classList.add("show");
+
+
+        setTimeout(() => {
+
+            toast.classList.remove("show");
+
+        }, 3000);
+    }
+
+
+    // =====================================================
+    // HTML SECURITY
+    // =====================================================
+
+    function escapeHtml(value) {
+
+        if (value === null || value === undefined) {
+            return "";
+        }
+
+
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+
+    // =====================================================
+    // LOGOUT
+    // =====================================================
+
+    function logout() {
+
+        localStorage.removeItem("token");
+
+        localStorage.removeItem("user");
+
+        window.location.href = "index.html";
+    }
+</script>
+
+</body>
+</html>

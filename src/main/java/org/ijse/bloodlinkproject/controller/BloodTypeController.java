@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/blood-type")
+@RequestMapping("/api/blood-type")
 @RequiredArgsConstructor
 public class BloodTypeController {
 

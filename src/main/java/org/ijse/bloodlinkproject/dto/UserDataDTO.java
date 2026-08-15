@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDataDTO {
-    private long userId;
+    private Long userId;
     private String token;
 }
