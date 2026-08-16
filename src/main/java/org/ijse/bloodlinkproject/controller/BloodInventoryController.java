@@ -23,28 +23,20 @@ public class BloodInventoryController {
     // ================= SAVE =================
 
     @PostMapping("/save")
-    public ResponseEntity<String> saveBloodInventory(
-            @RequestBody BloodInventoryDTO bloodInventoryDTO) {
+    public ResponseEntity<String> saveBloodInventory(@RequestBody BloodInventoryDTO bloodInventoryDTO) {
 
         log.info("BloodInventoryController save: {}",
                 bloodInventoryDTO);
 
         try {
-
-            bloodInventoryService.saveBloodInventory(
-                    bloodInventoryDTO
-            );
-
+            bloodInventoryService.saveBloodInventory(bloodInventoryDTO);
             return ResponseEntity
                     .status(HttpStatus.CREATED)
                     .body("Blood Inventory saved successfully");
 
         } catch (Exception ex) {
-
             log.error(
-                    "Error while saving Blood Inventory",
-                    ex
-            );
+                    "Error while saving Blood Inventory", ex);
 
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -56,27 +48,17 @@ public class BloodInventoryController {
     // ================= UPDATE =================
 
     @PutMapping("/update")
-    public ResponseEntity<String> updateBloodInventory(
-            @RequestBody BloodInventoryDTO bloodInventoryDTO) {
+    public ResponseEntity<String> updateBloodInventory(@RequestBody BloodInventoryDTO bloodInventoryDTO) {
 
-        log.info("BloodInventoryController update: {}",
-                bloodInventoryDTO);
+        log.info("BloodInventoryController update: {}", bloodInventoryDTO);
 
         try {
-
-            bloodInventoryService.updateBloodInventory(
-                    bloodInventoryDTO
-            );
-
-            return ResponseEntity
-                    .ok("Blood Inventory updated successfully");
+            bloodInventoryService.updateBloodInventory(bloodInventoryDTO);
+            return ResponseEntity.ok("Blood Inventory updated successfully");
 
         } catch (Exception ex) {
 
-            log.error(
-                    "Error while updating Blood Inventory",
-                    ex
-            );
+            log.error("Error while updating Blood Inventory", ex);
 
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -88,29 +70,19 @@ public class BloodInventoryController {
     // ================= DELETE =================
 
     @DeleteMapping("/delete/{inventoryId}")
-    public ResponseEntity<String> deleteBloodInventory(
-            @PathVariable Long inventoryId) {
+    public ResponseEntity<String> deleteBloodInventory(@PathVariable Long inventoryId) {
 
         log.info(
-                "BloodInventoryController delete: {}",
-                inventoryId
-        );
+                "BloodInventoryController delete: {}", inventoryId);
 
         try {
+            bloodInventoryService.deleteBloodInventory(inventoryId);
 
-            bloodInventoryService.deleteBloodInventory(
-                    inventoryId
-            );
-
-            return ResponseEntity
-                    .ok("Blood Inventory deleted successfully");
+            return ResponseEntity.ok("Blood Inventory deleted successfully");
 
         } catch (Exception ex) {
 
-            log.error(
-                    "Error while deleting Blood Inventory",
-                    ex
-            );
+            log.error("Error while deleting Blood Inventory", ex);
 
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -122,40 +94,23 @@ public class BloodInventoryController {
     // ================= GET ONE =================
 
     @GetMapping("/{inventoryId}")
-    public ResponseEntity<BloodInventoryDTO> getBloodInventory(
-            @PathVariable Long inventoryId) {
+    public ResponseEntity<BloodInventoryDTO> getBloodInventory(@PathVariable Long inventoryId) {
 
-        log.info(
-                "BloodInventoryController get: {}",
-                inventoryId
-        );
+        log.info("BloodInventoryController get: {}", inventoryId);
 
-        BloodInventoryDTO bloodInventoryDTO =
-                bloodInventoryService.getBloodInventory(
-                        inventoryId
-                );
-
-        return ResponseEntity.ok(
-                bloodInventoryDTO
-        );
+        BloodInventoryDTO bloodInventoryDTO = bloodInventoryService.getBloodInventory(inventoryId);
+        return ResponseEntity.ok(bloodInventoryDTO);
     }
-
 
     // ================= GET ALL =================
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<BloodInventoryDTO>>
-    getAllBloodInventory() {
+    public ResponseEntity<List<BloodInventoryDTO>> getAllBloodInventory() {
 
-        log.info(
-                "BloodInventoryController getAll"
-        );
+        log.info("BloodInventoryController getAll");
 
-        List<BloodInventoryDTO> bloodInventoryList =
-                bloodInventoryService.getAllBloodInventory();
+        List<BloodInventoryDTO> bloodInventoryList = bloodInventoryService.getAllBloodInventory();
 
-        return ResponseEntity.ok(
-                bloodInventoryList
-        );
+        return ResponseEntity.ok(bloodInventoryList);
     }
 }

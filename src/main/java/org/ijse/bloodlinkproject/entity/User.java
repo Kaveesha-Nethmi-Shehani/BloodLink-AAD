@@ -32,8 +32,16 @@ package org.ijse.bloodlinkproject.entity;
      private Status dataStatus;
 
      //User-Donation
-     @OneToMany
+     @OneToMany(mappedBy = "user")
      private List<Donation> donations;
+
+     //User-BloodRequest
+    @OneToMany(mappedBy = "user")
+    private List<BloodRequest> bloodRequests;
+
+    //User-EmergencyRequest
+    @OneToMany(mappedBy = "user")
+    private List<EmergencyRequest> emergencyRequests;
 
 
  }

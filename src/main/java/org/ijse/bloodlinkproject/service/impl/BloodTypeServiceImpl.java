@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.ijse.bloodlinkproject.dto.BloodTypeDTO;
 import org.ijse.bloodlinkproject.entity.BloodType;
+import org.ijse.bloodlinkproject.enumiration.Status;
 import org.ijse.bloodlinkproject.repository.BloodTypeRepository;
 import org.ijse.bloodlinkproject.service.BloodTypeService;
 import org.springframework.stereotype.Service;
@@ -66,6 +67,8 @@ public class BloodTypeServiceImpl implements BloodTypeService {
                 throw new RuntimeException("Sorry, related bloodType is not found");
             }
             BloodType bloodType = optionalBloodType.get();
+//            bloodType.setInventoryStatus(Status.AVAILABLE);
+
             //SP Delete
             bloodType.setActive(false);
             bloodTypeRepository.save(bloodType);

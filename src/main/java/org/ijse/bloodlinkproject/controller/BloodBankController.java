@@ -18,8 +18,7 @@ public class BloodBankController {
 
     //SAVE BLOOD BANK
     @PostMapping("/save")
-    public ResponseEntity<String> saveBloodBank(
-            @RequestBody BloodBankDTO bloodBankDTO) {
+    public ResponseEntity<String> saveBloodBank(@RequestBody BloodBankDTO bloodBankDTO) {
 
         bloodBankService.saveBloodBank(bloodBankDTO);
 
@@ -31,8 +30,7 @@ public class BloodBankController {
 
     // UPDATE BLOOD BANK
     @PutMapping("/update")
-    public ResponseEntity<String> updateBloodBank(
-            @RequestBody BloodBankDTO bloodBankDTO) {
+    public ResponseEntity<String> updateBloodBank(@RequestBody BloodBankDTO bloodBankDTO) {
 
         bloodBankService.updateBloodBank(bloodBankDTO);
 
@@ -44,8 +42,7 @@ public class BloodBankController {
 
     // DELETE / DEACTIVATE
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteBloodBank(
-            @PathVariable Long id) {
+    public ResponseEntity<String> deleteBloodBank(@PathVariable Long id) {
 
         bloodBankService.deleteBloodBankById(id);
 
@@ -57,8 +54,7 @@ public class BloodBankController {
 
     //GET ONE BLOOD BANK
     @GetMapping("/{bloodBankId}")
-    public ResponseEntity<BloodBankDTO> getBloodBank(
-            @PathVariable Long bloodBankId) {
+    public ResponseEntity<BloodBankDTO> getBloodBank(@PathVariable Long bloodBankId) {
 
         BloodBankDTO bloodBankDTO =
                 bloodBankService.getBloodBankBy(bloodBankId);
